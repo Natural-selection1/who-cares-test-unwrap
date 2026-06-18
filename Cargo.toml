@@ -1,6 +1,13 @@
 [package]
-name = "who_cares_test_unwrap"
-version = "0.1.0"
+name = "who_cares"
+version = "1.0.1"
 edition = "2024"
+description = "Nightly-only test helper for using ? as unwrap-style control flow in tests."
+repository = "https://github.com/Natural-selection1/who-cares-test-unwrap"
+license = "MIT"
 
 [dependencies]
+
+[dev-dependencies]
+anyhow = "1"
+serde_json = "1"
