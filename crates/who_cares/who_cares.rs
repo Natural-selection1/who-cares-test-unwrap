@@ -5,7 +5,7 @@ use std::process;
 
 /// A unified test return type
 /// where `?` panics for `Result::Err` and `Option::None`.
-#[derive(Clone, Copy, Debug, Eq, Hash, Ord, PartialEq, PartialOrd)]
+#[derive(Debug)]
 pub struct WhoCares<T>(pub T);
 
 impl<T> FromResidual<Option<Infallible>> for WhoCares<T> {

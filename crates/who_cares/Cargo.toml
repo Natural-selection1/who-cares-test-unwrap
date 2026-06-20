@@ -10,14 +10,9 @@ license.workspace = true
 [lib]
 path = "lib.rs"
 
-[[example]]
-name = "attribute_macro"
-path = "examples/attribute_macro.rs"
-required-features = ["macro"]
-
 [[test]]
-name = "attribute"
-path = "tests/attribute.rs"
+name = "macro"
+path = "tests/macro.rs"
 required-features = ["macro"]
 
 [dependencies]
