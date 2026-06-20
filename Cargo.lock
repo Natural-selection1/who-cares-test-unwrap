@@ -103,6 +103,15 @@ version = "1.0.1"
 dependencies = [
  "anyhow",
  "serde_json",
+ "who_cares_macros",
+]
+
+[[package]]
+name = "who_cares_macros"
+version = "1.0.1"
+dependencies = [
+ "quote",
+ "syn",
 ]
 
 [[package]]

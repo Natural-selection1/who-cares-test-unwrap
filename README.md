@@ -31,14 +31,15 @@ being cluttered with `.unwrap()`.
 ```toml
 # Cargo.toml
 [dev-dependencies]
-who_cares = "0.1"
+who_cares = { version = "0.1", features = ["macro"] }
 ```
 
 ```rust
-use who_cares::WhoCares;
+use who_cares::who_cares;
 
 #[test]
-fn parses_fixture() -> WhoCares<()> {
+#[who_cares]
+fn parses_fixture() {
     let text = std::fs::read_to_string("tests/fixtures/input.json")?;
     //                  ^^^^^^^^^^^^^^
     //                  std::io::Result<String>
@@ -51,6 +52,31 @@ fn parses_fixture() -> WhoCares<()> {
     //             ^^^        ^^^^^^
     //             Option<&serde_json::Value>,
     //                        Option<u64>
+    assert_eq!(id, 42);
+}
+```
+
+`#[who_cares]` rewrites the test function to return `WhoCares<()>` and appends
+`WhoCares(())` for you. It does not rewrite `?`.
+
+The `macro` feature is optional. Of course, if you do not want to pull in the
+macro dependencies, you can write the original form directly:
+
+```toml
+# Cargo.toml
+[dev-dependencies]
+who_cares = "0.1"
+```
+
+```rust
+use who_cares::WhoCares;
+
+#[test]
+fn parses_fixture() -> WhoCares<()> {
+    let text = std::fs::read_to_string("tests/fixtures/input.json")?;
+    let value: serde_json::Value = serde_json::from_str(&text)?;
+    let id = value.get("id")?.as_u64()?;
+
     assert_eq!(id, 42);
     WhoCares(())
 }
@@ -75,5 +101,4 @@ This includes common result aliases such as `std::io::Result<T>`, `anyhow::Resul
 
 They all flow through the same generic `Result` support.
 
-See the runnable examples in [`examples/`](examples/) for `std::io::Result`,
-`anyhow::Result`, and `serde_json::Result`.
+See the runnable examples in [`examples/`](examples/).
