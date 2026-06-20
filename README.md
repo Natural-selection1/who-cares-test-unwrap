@@ -101,4 +101,4 @@ This includes common result aliases such as `std::io::Result<T>`, `anyhow::Resul
 
 They all flow through the same generic `Result` support.
 
-See the runnable examples in [`examples/`](examples/).
+See the runnable examples in [`crates/who_cares/examples/`](crates/who_cares/examples/).

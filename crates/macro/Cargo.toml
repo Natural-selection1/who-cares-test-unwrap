@@ -1,6 +1,6 @@
 [package]
 name = "who_cares_macros"
-version = "1.0.1"
+version = "0.0.0"
 edition = "2024"
 description = "Attribute macros for who_cares."
 repository = "https://github.com/Natural-selection1/who-cares-test-unwrap"

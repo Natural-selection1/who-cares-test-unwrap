@@ -1,32 +1,10 @@
-[package]
-name = "who_cares"
+[workspace]
+resolver = "3"
+members = ["crates/*"]
+default-members = ["crates/who_cares"]
+
+[workspace.package]
 version = "1.0.1"
 edition = "2024"
-description = "Nightly-only test helper for using ? as unwrap-style control flow in tests."
 repository = "https://github.com/Natural-selection1/who-cares-test-unwrap"
 license = "MIT"
-
-[workspace]
-members = [".", "who_cares_macros"]
-resolver = "3"
-
-[features]
-default = []
-macro = ["dep:who_cares_macros"]
-
-[dependencies]
-who_cares_macros = { version = "1.0.1", path = "who_cares_macros", optional = true }
-
-[dev-dependencies]
-anyhow = "1"
-serde_json = "1"
-
-[[test]]
-name = "attribute"
-path = "tests/attribute.rs"
-required-features = ["macro"]
-
-[[example]]
-name = "attribute_macro"
-path = "examples/attribute_macro.rs"
-required-features = ["macro"]
